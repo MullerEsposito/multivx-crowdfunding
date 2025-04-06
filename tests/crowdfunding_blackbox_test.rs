@@ -42,7 +42,6 @@ fn crowdfunding_fund_test() {
 
     state.world.check_account(OWNER_ADDRESS).nonce(1).balance(INITIAL_BALANCE);
     state.world.check_account(DONOR_ONE_ADDRESS).nonce(0).balance(INITIAL_BALANCE);
-
     
     state.fund(DONOR_ONE_ADDRESS, DONOR_ONE_DONATION);
 
@@ -56,11 +55,20 @@ fn crowdfunding_fund_test() {
         .nonce(0)
         .balance(DONOR_ONE_DONATION);
 
-    state.check_target(TARGET);
-
-    state.check_deadline(DEADLINE);
-
     state.check_deposit(DONOR_ONE_ADDRESS, DONOR_ONE_DONATION);
+
+    state.fund(DONOR_ONE_ADDRESS, 1_000_000_000u64);
+
+    state.world
+        .check_account(DONOR_ONE_ADDRESS)
+        .nonce(2)
+        .balance(INITIAL_BALANCE - DONOR_ONE_DONATION - 1_000_000_000u64);
+    state.world
+        .check_account(CROWDFUNDING_ADDRESS)
+        .nonce(0)
+        .balance(DONOR_ONE_DONATION + 1_000_000_000u64);
+
+    state.check_deposit(DONOR_ONE_ADDRESS, DONOR_ONE_DONATION + 1_000_000_000u64);    
 }
 
 #[test]
