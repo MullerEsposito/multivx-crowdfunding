@@ -13,6 +13,7 @@
     pkgs.stdenv.cc
     pkgs.pkg-config
     pkgs.openssl.dev
+    pkgs.gh
   ];
   # Sets environment variables in the workspace
   env = {
