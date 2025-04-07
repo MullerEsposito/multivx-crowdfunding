@@ -90,7 +90,7 @@ pub trait Crowdfunding {
 }
 
 #[type_abi]
-#[derive(TopEncode, TopDecode, PartialEq, Clone, Copy)]
+#[derive(TopEncode, TopDecode, PartialEq, Clone, Copy, Debug)]
 pub enum Status {
     Funding,
     Successful,
