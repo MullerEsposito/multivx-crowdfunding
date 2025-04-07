@@ -15,6 +15,7 @@
     pkgs.openssl.dev
     pkgs.gh
   ];
+  services.docker.enable = true;
   # Sets environment variables in the workspace
   env = {
     RUST_SRC_PATH = "${pkgs.rustPlatform.rustLibSrc}";
