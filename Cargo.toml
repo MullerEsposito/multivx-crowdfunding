@@ -21,4 +21,5 @@ version = "0.57.0"
 members = [
     ".",
     "meta",
+    "interactor",
 ]
